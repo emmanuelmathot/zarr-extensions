@@ -40,7 +40,7 @@ The `geo:proj` attribute can be added to Zarr arrays or groups to define project
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**version**|`string`|| &#10003; Yes|
+|**version**|`string`|Projection metadata version| &#10003; Yes|
 |**code**|`["string", "null"]`|Authority:code identifier (e.g., EPSG:4326)|No|
 |**wkt2**|`["string", "null"]`|WKT2 (ISO 19162) CRS representation|No|
 |**projjson**|`any`|PROJJSON CRS representation|No|
@@ -53,6 +53,8 @@ The `geo:proj` attribute can be added to Zarr arrays or groups to define project
 Additional properties are allowed.
 
 #### geo:proj.version
+
+Projection metadata version
 
 * **Type**: `string`
 * **Required**:  &#10003; Yes
