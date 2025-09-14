@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: update-schema-docs
+        name: Update schema documentation
+        entry: bash -c 'cd attributes/geo:proj && if [ -f "update-readme.js" ] && [ -f "geo-proj-schema.json" ]; then node update-readme.js; fi'
+        language: node
+        files: ^attributes/.*/.*schema\.json$|^attributes/.*/update-readme\.js$
+        pass_filenames: false
+        require_serial: true
+        additional_dependencies: [wetzel@0.2.3]

@@ -1,0 +1,15 @@
+{
+  "name": "zarr-extensions",
+  "version": "1.0.0",
+  "description": "Zarr extensions with automated schema documentation",
+  "scripts": {
+    "update-docs": "cd attributes/geo:proj && node update-readme.js",
+    "install-hooks": "pre-commit install"
+  },
+  "devDependencies": {
+    "wetzel": "^0.2.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
