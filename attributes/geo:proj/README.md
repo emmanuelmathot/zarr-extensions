@@ -40,23 +40,19 @@ The `geo:proj` attribute can be added to Zarr arrays or groups to define project
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**version**|`string`|Version of the geo:proj extension being used| &#10003; Yes|
+|**version**|`string`|| &#10003; Yes|
 |**code**|`["string", "null"]`|Authority:code identifier (e.g., EPSG:4326)|No|
 |**wkt2**|`["string", "null"]`|WKT2 (ISO 19162) CRS representation|No|
-|**projjson**|`["object", "null"]`|PROJJSON CRS representation|No|
+|**projjson**|`any`|PROJJSON CRS representation|No|
 |**bbox**|`number` `[]`|Bounding box in CRS coordinates|No|
 |**transform**|`number` `[]`|Affine transformation coefficients|No|
 |**spatial_dimensions**|`string` `[2]`|Names of spatial dimensions [y_name, x_name]|No|
 
-**Requirements:**
-- The `version` field is required
-- At least one of `code`, `wkt2`, or `projjson` must be provided
-
 ### Field Details
 
-#### geo:proj.version
+Additional properties are allowed.
 
-Version of the geo:proj extension being used
+#### geo:proj.version
 
 * **Type**: `string`
 * **Required**:  &#10003; Yes
@@ -82,7 +78,7 @@ WKT2 (ISO 19162) CRS representation
 
 PROJJSON CRS representation
 
-* **Type**: `["object", "null"]`
+* **Type**: `any`
 * **Required**: No
 
 #### geo:proj.bbox

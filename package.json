@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Zarr extensions with automated schema documentation",
   "scripts": {
-    "update-docs": "cd attributes/geo:proj && node update-readme.js",
+    "update-docs": "node scripts/update-attribute-docs.js",
     "install-hooks": "pre-commit install"
   },
   "devDependencies": {
