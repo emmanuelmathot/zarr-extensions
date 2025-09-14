@@ -23,3 +23,76 @@ Each attribute extension MUST:
 - Provide a JSON schema for validation
 - Include examples of usage
 - Document any inheritance or precedence rules
+
+## Automated Schema Documentation
+
+This repository includes an automated documentation generation system that creates detailed field documentation directly from JSON Schema files. This ensures documentation always stays in sync with schema definitions and provides precise JSON type information.
+
+### How It Works
+
+The system uses [Wetzel](https://github.com/CesiumGS/wetzel) to automatically generate Markdown documentation from JSON Schema files, including:
+
+- **Properties tables** with precise JSON types (e.g., `string`, `number []`, `string [2]`)
+- **Field details** with validation rules, patterns, and constraints
+- **Type information** extracted directly from the schema
+- **Requirement status** for each field
+
+### Enabling Documentation Generation
+
+To enable automatic documentation for your extension:
+
+1. **Create your extension** with a `schema.json` file
+2. **Add placeholder markers** to your `README.md`:
+
+```markdown
+## Specification
+
+<!-- GENERATED_SCHEMA_DOCS_START -->
+### Fields
+
+- `field1`: Basic description of field1
+- `field2`: Basic description of field2
+<!-- GENERATED_SCHEMA_DOCS_END -->
+```
+
+3. **Commit your changes** - the pre-commit hook will automatically generate detailed documentation
+
+### Generated Documentation Format
+
+The system replaces the placeholder content with:
+
+- **Properties table** showing field names, JSON types, descriptions, and required status
+- **Field details** sections with comprehensive type information, validation rules, and constraints
+
+Example output:
+```markdown
+**`extension-name` Properties**
+
+|   |Type|Description|Required|
+|---|---|---|---|
+|**version**|`string`|Version of the extension| ✓ Yes|
+|**bbox**|`number` `[]`|Bounding box coordinates|No|
+
+### Field Details
+
+#### extension-name.version
+Version of the extension
+* **Type**: `string`
+* **Required**: ✓ Yes
+* **Allowed values**: `"1.0"`
+
+#### extension-name.bbox
+Bounding box coordinates
+* **Type**: `number` `[]` (array of numbers)
+* **Required**: No
+* **Length**: 4 or 6 elements
+```
+
+### Manual Documentation Updates
+
+To manually update documentation for all extensions:
+
+```bash
+npm run update-docs
+```
+
